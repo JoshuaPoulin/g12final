@@ -1,0 +1,66 @@
+<h1>Create New Post</h1>
+
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("#inputform").hide();
+    });
+    $("#show").click(function(){
+        $("#inputform").show();
+    });
+});
+</script>
+
+<button type="button" class="btn btn-default" id="hide">Hide</button>
+<button type="button" class="btn btn-default" id="show">Show</button>
+
+
+<div class="col-md-5 inputform" id="inputform">
+<form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="title" class="col-lg-2 control-label">Title</label>
+      <div class="col-lg-10">
+        <input type="title" class="form-control" id="title" placeholder="title" ng-model="inputform.title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="link" class="col-lg-2 control-label">Link</label>
+      <div class="col-lg-10">
+        <input type="link" class="form-control" id="link" placeholder="Link to Original Article" ng-model="inputform.link">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="imageurl" class="col-lg-2 control-label">Image URL</label>
+      <div class="col-lg-10">
+        <input type="imageurl" class="form-control" id="imageurl" placeholder="Image URL" ng-model="inputform.imageurl">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="summary" class="col-lg-2 control-label">Summary</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="summary" ng-model="inputform.summary"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary" ng-click="newArticle()">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+<div class="articles">
+  <div class="row margin-top meetups" ng-repeat='articles in articles'>
+    <div class="col-md-9 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img ng-src="{{articles.imageurl}}">
+          </div>
+        </div>
+      <div class="col-md-9">
+        <h4><strong class="text-primary">{{articles.title}}</strong></a> </h4>
+      </div>
+    </div>
+</div>
