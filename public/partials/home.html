@@ -51,16 +51,16 @@ $(document).ready(function(){
 </form>
 </div>
 <div class="articles">
-  <div class="row margin-top meetups" ng-repeat='articles in articles'>
+  <div class="row margin-top" ng-repeat='articles in articles'>
     <div class="col-md-9 col-md-offset-1">
       <div class="row">
         <div class="col-md-3">
           <div class="thumbnail">
-            <img ng-src="{{articles.imageurl}}">
+            <a href="/article/{{ articles.id }}"><img ng-src="{{articles.imageurl}}">
           </div>
         </div>
       <div class="col-md-9">
-        <h4><strong class="text-primary">{{articles.title}}</strong></a> </h4>
+        <h4><a href="/article/{{ articles.id }}"><strong class="text-primary">{{articles.title}}</strong></a> </h4>
       </div>
     </div>
 </div>

@@ -5,7 +5,7 @@ app.config(function($locationProvider, $routeProvider){
       templateUrl: '/partials/home.html',
       controller: 'HomeController'
     })
-    .when('/view', {
+    .when('/article/:id', {
       templateUrl: '/partials/view.html',
       controller: "ViewController"
     })

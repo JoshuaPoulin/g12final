@@ -9,7 +9,7 @@ CREATE TABLE articles (
   summary varchar(255)
 );
 
-CREATE TABLE opnions (
+CREATE TABLE opinions (
   id serial primary key,
   articles_id numeric,
   opinion varchar(50)
