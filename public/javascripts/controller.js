@@ -35,7 +35,6 @@ app.controller('ViewController', ['$scope', '$http','$location', '$rootScope', f
     for(var i = 0; i < $scope.opinions.length; i++){
       if($scope.opinions[i].articles_id == $scope.showView.id){
         $scope.showOpinions.push($scope.opinions[i]);
-        // $scope.analytics.push($scope.opinions[i].opinion);
       }
     }
     for(var i = 0; i < $scope.showOpinions.length; i++) {
