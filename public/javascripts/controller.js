@@ -17,6 +17,9 @@ app.controller('ViewController', ['$scope', '$http','$location', '$rootScope', f
   $scope.showView;
   $scope.showOpinions = [];
   $scope.viewURL;
+  $scope.analytics = [];
+  $scope.analasis;
+  $scope.finalAnalasis = [];
   $http.get("../views").then(function(response){
     $scope.articles = response.data[0];
     $scope.opinions = response.data[1];
@@ -32,8 +35,23 @@ app.controller('ViewController', ['$scope', '$http','$location', '$rootScope', f
     for(var i = 0; i < $scope.opinions.length; i++){
       if($scope.opinions[i].articles_id == $scope.showView.id){
         $scope.showOpinions.push($scope.opinions[i]);
+        // $scope.analytics.push($scope.opinions[i].opinion);
       }
     }
+    for(var i = 0; i < $scope.showOpinions.length; i++) {
+        $scope.showOpinions[i].opinion.replace(/[^\w\s]/gi, '').split(' ').forEach(function(word) {
+          if(word != 'they' && word != 'are' && word != 'I' && word != 'no' && word != 'very' && word != 'not') {
+            $scope.analytics.push(word.toLowerCase());
+          }
+        })
+      }
+      $scope.analasis = $scope.analytics.reduce(function(obj, val) {
+        obj[val] = obj[val] + 1 || 1;
+        return obj;
+      },{});
+      for(var instance in $scope.analasis) {
+        $scope.finalAnalasis.push({word: instance, times: $scope.analasis[instance]});
+      }
     });
   $scope.add = function(){
     $http.post("../add", {user:$scope.opinionform}).then(function(response){
